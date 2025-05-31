@@ -3,124 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roofing Pro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Roofing Pro - All In One</title>
+  <!-- External Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
+    /* Base Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    body, html {
+    body,
+    html {
       font-family: 'Poppins', sans-serif;
-      background-color: #ce0f0f00;
       scroll-behavior: smooth;
     }
 
+    /* -----------------------
+       Header & Drop-Down Navigation
+    -------------------------*/
     .main-header {
-      width: 100%;
-      background: rgba(255, 0, 0, 0);
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 100;
+      width: 100%;
+      background: rgba(255, 0, 0, 0);
       backdrop-filter: blur(6px);
       transition: all 0.3s ease;
-    }
-
-    .main-header.shrink {
       padding: 5px 0;
+      z-index: 100;
     }
-
     .main-header .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
-
-    .main-header .logo a img {
-      height: 80px;
+    .logo a img {
+      height: 120px;
       transition: all 0.3s ease;
     }
-
-    .main-header.shrink .logo a img {
-      height: 50px;
+    /* Updated arrow using inline SVG for a cleaner look */
+    .menu-toggle {
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-
-    .main-header .nav ul {
-      display: flex;
-      gap: 20px;
+    .menu-toggle svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+    .menu-toggle.rotated {
+      transform: rotate(180deg);
+    }
+    /* Drop-Down Navigation container */
+    .dropdown-nav {
+      display: none;
+      background: rgba(220, 0, 0, 0.95);
+      text-align: center;
+    }
+    .dropdown-nav ul {
       list-style: none;
+      padding: 10px 0;
     }
-
-    .main-header .nav a {
+    .dropdown-nav ul li {
+      margin: 10px 0;
+    }
+    .dropdown-nav ul li a {
       color: #fff;
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      font-size: 1.2rem;
+    }
+    .dropdown-nav.open {
+      display: block;
     }
 
-    .main-header .nav a:hover {
-      color: #ff5252;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-      z-index: 101;
-    }
-
-    @media (max-width: 768px) {
-      .main-header .nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 60%;
-        background: rgba(0, 0, 0, 0.95);
-        padding-top: 100px;
-        flex-direction: column;
-        gap: 20px;
-        z-index: 100;
-        transition: transform 0.3s ease;
-      }
-
-      .main-header .nav.active {
-        display: flex;
-      }
-
-      .main-header .nav ul {
-        flex-direction: column;
-        gap: 20px;
-        padding-left: 20px;
-      }
-
-      .hamburger {
-        display: block;
-      }
-    }
-
+    /* -----------------------
+         Hero / Quote Section
+       -------------------------*/
     .hero {
       position: relative;
       min-height: 100vh;
       overflow: hidden;
-      padding-top: 100px;
+      padding-top: 140px;
       animation: fadeIn 1.5s ease-in;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .hero img.bg-img {
       position: absolute;
       top: 0;
@@ -130,35 +105,29 @@
       object-fit: cover;
       z-index: -2;
     }
-
     .hero-overlay {
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.082);
       z-index: -1;
     }
-
     .hero-content {
       text-align: center;
       color: white;
       padding: 120px 20px 40px;
       animation: fadeIn 1.5s ease-in;
     }
-
     .hero h1 {
       font-size: 2.5rem;
       font-weight: 700;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
-
     .hero-line {
       width: 80px;
       height: 3px;
       background: white;
       margin: 1rem auto;
     }
-
-       /* Quote form */
     .quote-form {
       background: rgba(0, 0, 0, 0.329);
       padding: 25px;
@@ -172,7 +141,6 @@
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(6px);
     }
-
     .quote-form h2 {
       font-size: 1.5rem;
       font-weight: 600;
@@ -180,19 +148,16 @@
       margin-bottom: 10px;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
-
     .quote-form .underline {
       width: 60px;
       height: 3px;
       background: white;
       margin: 0 auto 15px;
     }
-
     .input-group {
       display: flex;
       gap: 10px;
     }
-
     .input-group input,
     .quote-form input,
     .quote-form textarea {
@@ -204,17 +169,14 @@
       width: 100%;
       font-size: 1rem;
     }
-
     .quote-form input::placeholder,
     .quote-form textarea::placeholder {
       color: #0000004b;
     }
-
     .quote-form textarea {
       resize: vertical;
       min-height: 80px;
     }
-
     .quote-form button {
       background-color: #d90000;
       color: white;
@@ -225,33 +187,24 @@
       border-radius: 6px;
       font-size: 1rem;
     }
-
     .quote-form button:hover {
       background-color: #b80000;
     }
-
-    /* Roof divider */
     .roof-divider {
-      position: relative;
-      z-index: 1;
       width: 100%;
       overflow: hidden;
       line-height: 0;
     }
 
-    .roof-divider svg {
-      display: block;
-      width: 100%;
-      height: 80px;
-    }
-
-    /* Testimonials */
+    /* -----------------------
+         Testimonials Section
+       -------------------------*/
     .testimonials-section {
       padding: 80px 20px;
       text-align: center;
       background-color: #fff;
+      color: #000;
     }
-
     .testimonials-section h2 {
       font-size: 2rem;
       font-weight: 700;
@@ -259,7 +212,6 @@
       position: relative;
       display: inline-block;
     }
-
     .testimonials-section h2::before,
     .testimonials-section h2::after {
       content: "";
@@ -269,59 +221,49 @@
       height: 2px;
       background: #000;
     }
-
     .testimonials-section h2::before {
       left: -50px;
     }
-
     .testimonials-section h2::after {
       right: -50px;
     }
-
     .testimonials-section p {
       color: #b00000;
       font-weight: 600;
       margin-bottom: 40px;
     }
-
     .swiper {
       max-width: 600px;
       margin: 0 auto;
     }
-
     .testimonial-card {
       background: #f8f8f8;
       padding: 30px 25px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       position: relative;
     }
-
     .testimonial-card .stars {
       color: #d90000;
       font-size: 1.2rem;
       margin-bottom: 15px;
     }
-
     .testimonial-card p {
       color: #555;
       font-size: 0.95rem;
       line-height: 1.6;
     }
-
     .testimonial-card .author {
       font-weight: 700;
       margin-top: 20px;
       font-size: 1rem;
       color: #000;
     }
-
     .testimonial-card .meta {
       font-size: 0.85rem;
       color: #888;
       margin-top: 3px;
     }
-
     .testimonial-card .quote-icon {
       position: absolute;
       bottom: 20px;
@@ -329,145 +271,18 @@
       color: #d90000;
       font-size: 2rem;
     }
-    </style>
 
-<header class="main-header" id="mainHeader">
-  <div class="container">
-    <div class="logo">
-      <a href="#"><img src="logo.png" alt="Roofing Pro Logo"></a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav class="nav" id="mainNav">
-      <ul>
-        <li><a href="#" onclick="toggleMenu()">Home</a></li>
-        <li><a href="#quote" onclick="toggleMenu()">Get a Quote</a></li>
-        <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<section class="hero" id="quote">
-  <img class="bg-img" src="https://www.marley.co.uk/-/media/images/case-studies/duo-edgemere/cala-homes/cala-homes-oldfold-village-7-sm-grmin.ashx?rev=f04c5b9ac0304073bbd8870c146c3876" alt="Roofing Background">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>ONE OF MANCHESTER'S<br>LEADING ROOFING<br>SPECIALISTS</h1>
-    <div class="hero-line"></div>
-    <p>
-      With over 15 years of experience, our expert team provides free quotes and inspections,
-      ensuring high-quality service for all your roofing needs.
-    </p>
-
-
-
-    <form class="quote-form" action="https://formspree.io/f/mgvkjrgw" method="POST">
-      <h2>GET A FREE QUOTE</h2>
-      <div class="underline"></div>
-      <div class="input-group">
-        <input type="text" name="First Name" placeholder="First Name" required>
-        <input type="text" name="Last Name" placeholder="Last Name" required>
-      </div>
-      <input type="text" name="Phone Number" placeholder="Phone Number" required>
-      <input type="text" name="Address" placeholder="Your Address" required>
-      <textarea name="Project Description" placeholder="Describe Your Project" required></textarea>
-      <input type="text" name="_gotcha" style="display:none">
-      <button type="submit">Send</button>
-    </form>
-  </div>
-
-  <div class="roof-divider">
-    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
-      <polygon points="0,80 600,0 1200,80" style="fill: white;"></polygon>
-    </svg>
-  </div>
-</section>
-
-<section class="testimonials-section" id="testimonials">
-  <h2>OUR TESTIMONIALS</h2>
-  <p>WE WILL LET OUR REVIEWS DO THE TALKING!</p>
-
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>Our roof was damaged after a storm, so we called James. They came over straight away, gave us a fair quote, and got the repair done quickly. They also showed us photos of the damage and the work they did. Very happy with the service and the price.</p>
-          <div class="author">Jayney</div>
-          <div class="meta">(3 months ago) Google</div>
-          <div class="quote-icon">❞</div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>Absolutely professional and very courteous team. They completed the work ahead of schedule and left everything clean. Highly recommend their services.</p>
-          <div class="author">Michael R.</div>
-          <div class="meta">(1 month ago) Google</div>
-          <div class="quote-icon">❞</div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>I was impressed with how responsive and friendly the staff were. Great job with fixing my roof leak, and they provided before-and-after pictures. Very professional.</p>
-          <div class="author">Samantha K.</div>
-          <div class="meta">(2 weeks ago) Google</div>
-          <div class="quote-icon">❞</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper('.swiper', {
-    loop: true,
-    autoplay: {
-      delay: 6000,
-      disableOnInteraction: false,
-    },
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
-  });
-
-  function toggleMenu() {
-    document.querySelector('.nav').classList.toggle('active');
-  }
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Why Choose Us</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff;
-    }
-
+    /* -----------------------
+         Why Choose Us Section
+       -------------------------*/
     .why-choose-section {
-      background: url('https://gutterandroofrepairs.com.au/wp-content/uploads/2023/08/AdobeStock_430086891-1-scaled.jpeg') no-repeat center center/cover;
+      background: url('https://gutterandroofrepairs.com.au/wp-content/uploads/2023/08/AdobeStock_430086891-1-scaled.jpeg')
+        no-repeat center center/cover;
       padding: 80px 20px;
       color: white;
       text-align: center;
       position: relative;
     }
-
     .why-choose-section::before {
       content: "";
       position: absolute;
@@ -475,7 +290,6 @@
       background: rgba(0, 0, 0, 0.6);
       z-index: 0;
     }
-
     .why-choose-section h2 {
       position: relative;
       font-size: 2rem;
@@ -483,7 +297,6 @@
       margin-bottom: 40px;
       z-index: 1;
     }
-
     .cards-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -493,7 +306,6 @@
       position: relative;
       z-index: 1;
     }
-
     .card {
       background: rgba(255, 0, 0, 0.85);
       padding: 30px 20px;
@@ -508,161 +320,46 @@
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
     .card.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .card-icon {
       width: 40px;
       height: 40px;
       fill: white;
     }
-
     .card-title {
       font-size: 1.1rem;
       font-weight: 700;
     }
-
     .card-text {
       font-size: 0.95rem;
       font-weight: 400;
       line-height: 1.6;
     }
-
     @media (max-width: 500px) {
       .why-choose-section h2 {
         font-size: 1.5rem;
       }
     }
-  </style>
-</head>
-<body>
 
-  <section class="why-choose-section">
-    <h2>WHY CHOOSE ROOFING PRO MANCHESTER?</h2>
-    <div class="cards-container">
-      <div class="card">
-        <svg class="card-icon" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zm0 5.27L6.18 7 12 9.73 17.82 7 12 7.27zM2 17l10 5 10-5V9l-10 5-10-5v8z"/>
-        </svg>
-        <div class="card-title">15 YEARS OF EXPERIENCE</div>
-        <div class="card-text">
-          Backed by 15+ years of hands-on experience, we guarantee professional roofing solutions tailored to meet your unique needs.
-        </div>
-      </div>
-
-      <div class="card">
-        <svg class="card-icon" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
-          4.42 3 7.5 3c1.74 0 3.41 0.81 
-          4.5 2.09C13.09 3.81 14.76 3 16.5 
-          3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 
-          6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-        <div class="card-title">ALL WORK GUARANTEED</div>
-        <div class="card-text">
-          We stand behind every project with a guarantee, ensuring lasting quality and your complete satisfaction with our services.
-        </div>
-      </div>
-
-      <div class="card">
-        <svg class="card-icon" viewBox="0 0 24 24">
-          <path d="M12 2a10 10 0 0 1 10 10 10 10 
-          0 1 1-10-10zm-1 14h2v2h-2v-2zm1-12c-4.42 
-          0-8 3.58-8 8 0 1.85.63 3.55 1.69 
-          4.9L12 22l5.31-5.1A7.952 7.952 0 0 0 20 
-          12c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        <div class="card-title">FULLY LICENSED AND INSURED</div>
-        <div class="card-text">
-          Our team is fully licensed, insured, and adheres to the highest safety standards, ensuring quality and peace of mind.
-        </div>
-      </div>
-
-      <div class="card">
-        <svg class="card-icon" viewBox="0 0 24 24">
-          <path d="M4 4h16v2H4zm2 4h12v2H6zm-2 
-          4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4z"/>
-        </svg>
-        <div class="card-title">COMPETITIVE PRICES</div>
-        <div class="card-text">
-          We offer high-quality roofing services at affordable rates, ensuring you get the best value without compromising on quality.
-        </div>
-      </div>
-
-      <div class="card">
-        <svg class="card-icon" viewBox="0 0 24 24">
-          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
-        </svg>
-        <div class="card-title">CLEAN AND TIDY</div>
-        <div class="card-text">
-          We promise a seamless experience—minimal disruption, maximum satisfaction, leaving brilliance in every detail.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const cards = document.querySelectorAll('.card');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    cards.forEach(card => {
-      observer.observe(card);
-    });
-  </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find Us on the Map</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: rgb(3, 3, 3);
-    }
-
+    /* -----------------------
+         Map Section
+       -------------------------*/
     .map-section {
       position: relative;
       padding: 100px 20px;
       text-align: center;
-      background: url('') no-repeat center center/cover;
+      background: #fff;
       overflow: hidden;
     }
-
     .map-overlay {
       position: absolute;
       inset: 0;
       background: rgb(255, 255, 255);
       z-index: 1;
     }
-
     .map-content {
       position: relative;
       z-index: 2;
@@ -670,25 +367,21 @@
       margin: 0 auto;
       animation: fadeInUp 1.2s ease forwards;
     }
-
     .map-section h2 {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 30px;
     }
-
     .map-wrapper {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
-
     iframe {
       width: 100%;
       height: 450px;
       border: none;
     }
-
     .quote-btn {
       display: inline-block;
       margin-top: 30px;
@@ -701,26 +394,151 @@
       font-size: 1rem;
       transition: background 0.3s ease;
     }
-
     .quote-btn:hover {
       background-color: #b80000;
     }
-
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- FIND US ON THE MAP SECTION -->
+  <!-- Header with Centered Big Logo and Dropdown Arrow Close Together -->
+  <header class="main-header" id="mainHeader">
+    <div class="container">
+      <div class="logo">
+        <a href="#quote"><img src="logo.png" alt="Roofing Pro Logo"></a>
+      </div>
+      <!-- New SVG Arrow as Menu Toggle -->
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <svg viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5H7z"></path>
+        </svg>
+      </div>
+    </div>
+    <!-- Drop-Down Navigation -->
+    <nav class="dropdown-nav">
+      <ul>
+        <li><a href="#quote" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
+        <li><a href="#why-choose" onclick="toggleMenu()">Why Choose Us</a></li>
+        <li><a href="#map" onclick="toggleMenu()">Find Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 1. Quote / Sign Up Section (Hero) -->
+  <section class="hero" id="quote">
+    <img class="bg-img" src="https://www.marley.co.uk/-/media/images/case-studies/duo-edgemere/cala-homes/cala-homes-oldfold-village-7-sm-grmin.ashx?rev=f04c5b9ac0304073bbd8870c146c3876" alt="Roofing Background">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>ONE OF MANCHESTER'S<br>LEADING ROOFING SPECIALISTS</h1>
+      <div class="hero-line"></div>
+      <p>With over 15 years of experience, we provide free quotes and inspections for all your roofing needs.</p>
+      <form class="quote-form" action="https://formspree.io/f/mgvkjrgw" method="POST">
+        <h2>GET A FREE QUOTE</h2>
+        <div class="underline"></div>
+        <div class="input-group">
+          <input type="text" name="First Name" placeholder="First Name" required>
+          <input type="text" name="Last Name" placeholder="Last Name" required>
+        </div>
+        <input type="text" name="Phone Number" placeholder="Phone Number" required>
+        <input type="text" name="Address" placeholder="Your Address" required>
+        <textarea name="Project Description" placeholder="Describe Your Project" required></textarea>
+        <!-- Anti-spam hidden field -->
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div class="roof-divider">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <polygon points="0,80 600,0 1200,80" style="fill: white;"></polygon>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 2. Testimonials Section -->
+  <section class="testimonials-section" id="testimonials">
+    <h2>OUR TESTIMONIALS</h2>
+    <p>WE WILL LET OUR REVIEWS DO THE TALKING!</p>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>Our roof was damaged after a storm, so we called James. They came over straight away, gave us a fair quote, and got the repair done quickly. We were very happy with the service and price.</p>
+            <div class="author">Jayney</div>
+            <div class="meta">(3 months ago) Google</div>
+            <div class="quote-icon">❞</div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>Absolutely professional and courteous. They completed the work ahead of schedule and left everything clean. Highly recommend!</p>
+            <div class="author">Michael R.</div>
+            <div class="meta">(1 month ago) Google</div>
+            <div class="quote-icon">❞</div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>I was impressed with how responsive and friendly the staff were. They fixed my roof leak and provided before-and-after pictures. Very professional!</p>
+            <div class="author">Samantha K.</div>
+            <div class="meta">(2 weeks ago) Google</div>
+            <div class="quote-icon">❞</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Why Choose Us Section -->
+  <section class="why-choose-section" id="why-choose">
+    <h2>WHY CHOOSE ROOFING PRO MANCHESTER?</h2>
+    <div class="cards-container">
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zm0 5.27L6.18 7 12 9.73 17.82 7 12 7.27zM2 17l10 5 10-5V9l-10 5-10-5v8z"/>
+        </svg>
+        <div class="card-title">15 YEARS OF EXPERIENCE</div>
+        <div class="card-text">Backed by 15+ years of hands-on experience, we guarantee professional roofing solutions tailored to your needs.</div>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <div class="card-title">ALL WORK GUARANTEED</div>
+        <div class="card-text">We stand behind every project with a guarantee, ensuring lasting quality and your complete satisfaction.</div>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 0 1 10 10 10 10 0 1 1-10-10zm-1 14h2v2h-2v-2zm1-12c-4.42 0-8 3.58-8 8 0 1.85.63 3.55 1.69 4.9L12 22l5.31-5.1A7.952 7.952 0 0 0 20 12c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <div class="card-title">FULLY LICENSED AND INSURED</div>
+        <div class="card-text">Our team is fully licensed, insured, and adheres to the highest safety standards, ensuring quality and peace of mind.</div>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24">
+          <path d="M4 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4z"/>
+        </svg>
+        <div class="card-title">COMPETITIVE PRICES</div>
+        <div class="card-text">We offer high-quality roofing services at affordable rates, delivering the best value without compromising quality.</div>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24">
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+        </svg>
+        <div class="card-title">CLEAN AND TIDY</div>
+        <div class="card-text">We promise a seamless experience—minimal disruption and maximum satisfaction with impeccable attention to detail.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Map / Find Us Section -->
   <section class="map-section" id="map">
     <div class="map-overlay"></div>
     <div class="map-content">
@@ -728,8 +546,8 @@
       <div class="map-wrapper">
         <iframe 
           src="https://www.google.com/maps?q=Manchester&output=embed"
-          allowfullscreen="" 
-          loading="lazy" 
+          allowfullscreen=""
+          loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
@@ -737,5 +555,39 @@
     </div>
   </section>
 
+  <!-- -----------------------
+       JavaScript Section
+       --------------------------->
+  <!-- Swiper for the Testimonials Slider -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper for Testimonials
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: { delay: 6000, disableOnInteraction: false },
+      effect: 'fade',
+      fadeEffect: { crossFade: true }
+    });
+    
+    // Toggle the drop-down navigation when the arrow (menu-toggle) is clicked
+    function toggleMenu() {
+      const dropdownNav = document.querySelector('.dropdown-nav');
+      dropdownNav.classList.toggle('open');
+      const arrow = document.querySelector('.menu-toggle');
+      arrow.classList.toggle('rotated');
+    }
+    
+    // Intersection Observer for "Why Choose Us" cards animation
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
+  </script>
 </body>
 </html>
